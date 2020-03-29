@@ -1,0 +1,31 @@
+@font-face {
+    font-family: EinaBold;
+    src: url("/fonts/Eina03-Bold.ttf");
+}
+@font-face {
+    font-family: EinaRegular;
+    src: url("/fonts/Eina03-Regular.ttf");
+}
+@font-face {
+    font-family: EinaSemiBold;
+    src: url("/fonts/Eina03-SemiBold.ttf");
+}
+
+h1.logo {
+    font-family: "EinaBold";
+    font-size: 3em;
+    margin-left: .2em;
+
+    background: -webkit-linear-gradient(#29F29B, #01A0FB);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+input.search-bar {
+    margin-left: 3em;
+    width: 25em;
+}
+
+div.right-item {
+    margin-right: 1em
+}
