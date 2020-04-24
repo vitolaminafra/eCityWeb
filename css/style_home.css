@@ -18,7 +18,7 @@ html {
 h1.logo {
     font-family: "EinaBold";
     font-size: 3em;
-    margin-left: .2em;
+    margin-left: 0.2em;
 
     background: -webkit-linear-gradient(#29F29B, #01A0FB);
     -webkit-background-clip: text;
@@ -31,7 +31,7 @@ input.search-bar {
 }
 
 div.right-item {
-    margin-right: 1em
+    margin-right: 1em;
 }
 
 #map {
@@ -39,7 +39,7 @@ div.right-item {
     height: 40em;
 
     border-radius: 25px;
-  }
+}
 
 div.container {
     margin: 2em;
@@ -52,47 +52,46 @@ div.buttons {
 h1.sectitle {
     font-family: "EinaSemiBold";
     font-size: 1.5em;
-    margin-bottom: .7em
+    margin-bottom: 0.7em;
 }
 
 div.nearbtn_1 {
     width: 6em;
     height: 6em;
-    margin-right: .3em;
+    margin-right: 0.3em;
     background-image: url("/img/greenbutton.png");
     background-size: contain;
     border-radius: 5px;
 
-    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25);
-    transition: box-shadow .4s;
+    box-shadow: -10px -10px 25px #e3e3e3, 10px 10px 25px #ffffff;
+    transition: box-shadow 0.3s;
 }
 
 div.nearbtn_1:hover {
-    box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.25);
+    box-shadow: -3px -3px 6px #e3e3e3, 3px 3px 6px #ffffff;
 }
-
 
 div.nearbtn_2 {
     width: 6em;
     height: 6em;
     margin-top: 1em;
-    margin-right: .3em;
+    margin-right: 0.3em;
     background-image: url("/img/bluebutton.png");
     background-size: contain;
     border-radius: 5px;
 
-    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25);
-    transition: box-shadow .4s;
+    box-shadow: -10px -10px 25px #e3e3e3, 10px 10px 25px #ffffff;
+    transition: box-shadow 0.3s;
 }
 
 div.nearbtn_2:hover {
-    box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.25);
+    box-shadow: -3px -3px 6px #e3e3e3, 3px 3px 6px #ffffff;
 }
 
 p.inbtn {
     font-family: "EinaSemiBold";
-    padding-top: .5em;
-    margin-left: .7em;
+    padding-top: 0.5em;
+    margin-left: 0.7em;
 }
 
 div.nearcol {
@@ -112,37 +111,40 @@ div.serbtn_bike {
     background-image: url("/img/bike.png");
     background-repeat: no-repeat;
     border-radius: 40px;
-    box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.25);
-    transition: box-shadow .3s;
     margin-bottom: 1.7em;
     height: 85px;
     width: 450px;
+
+    box-shadow: -10px -10px 25px #e3e3e3, 10px 10px 25px #ffffff;
+    transition: box-shadow 0.3s;
 }
 
 div.serbtn_bike:hover {
-    box-shadow: 0px 0px 1px 0px rgba(0, 0, 0, 0.25);
+    box-shadow: -3px -3px 6px #e3e3e3, 3px 3px 6px #ffffff;
 }
 
 div.serbtn_coffee {
     background-image: url("/img/coffee.png");
     background-repeat: no-repeat;
     border-radius: 40px;
-    box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.25);
-    transition: box-shadow .3s;
+    transition: box-shadow 0.3s;
     margin-bottom: 1.7em;
     height: 85px;
     width: 450px;
+
+    box-shadow: -10px -10px 25px #e3e3e3, 10px 10px 25px #ffffff;
+
 }
 
 div.serbtn_coffee:hover {
-    box-shadow: 0px 0px 1px 0px rgba(0, 0, 0, 0.25);
+    box-shadow: -3px -3px 6px #e3e3e3, 3px 3px 6px #ffffff;
 }
 
 p.sertitle {
     font-family: "EinaSemibold";
     font-size: 1.2em;
     margin-left: 5em;
-    padding-top: 1em
+    padding-top: 1em;
 }
 
 p.sersubtitle {
@@ -153,7 +155,7 @@ p.sersubtitle {
 
 span.iconser {
     margin-left: 25em;
-    margin-top: 0em;
+    margin-top: 0;
     display: flex;
     margin-top: -2.5em;
 
