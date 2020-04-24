@@ -1,24 +1,37 @@
 <?php
-$username = null;
-$password = null;
+    $email = $_POST["email"];
+    $psw = $_POST["password"];
+    $remain = $_POST["remain"];
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $servername = "localhost";
+    $username = "root";
+    $password = "root";
 
-    if(!empty($_POST["username"]) && !empty($_POST["password"])) {
-        $username = $_POST["username"];
-        $password = $_POST["password"];
-        
-        if($username == 'user' && $password == 'password') {
-            session_start();
-            $_SESSION["authenticated"] = 'true';
-            header('Location: /home_demo.html');
-        }
-        else {
-            header('Location: /index.html');
-        }
-        
-    } else {
-        header('Location: /index.html');
+    $conn = new mysqli($servername, $username, $password, "my_ecity");
+    if(!$conn) {
+        die("Not connected");
     }
-}
+    echo "Connected!";
+
+    $sql = "SELECT * FROM utente";
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+        while($row = $result->fetch_assoc()) {
+            if($row["email"] == $email && $row["psw"] == $psw){
+                if($remain == "true") {
+                    setcookie("logged", $row["uid"], time() + (86400 * 30), "/");
+                } else {
+                    session_start();
+                    $_SESSION["logged"] = $row["uid"];
+                }
+                header('Location: /home.html');
+            }
+        }
+    } 
+
+   header('Location: /index.php?notfound');
+
+    $conn->close();
+    
 ?>

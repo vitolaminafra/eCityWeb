@@ -1,3 +1,13 @@
+<?php
+    session_start();
+    if(isset($_SESSION["logged"])) {
+        header('Location: /home.html');
+    }
+    if(isset($_COOKIE['logged'])) {
+        header('Location: /home.html');
+    }
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -16,24 +26,52 @@
             src="https://code.jquery.com/jquery-3.4.1.min.js"
             integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
             crossorigin="anonymous"></script>
+
         <script
-            defer="defer"
-            src="js/login.js"></script>
+            src="https://cdn.rawgit.com/mgalante/jquery.redirect/master/jquery.redirect.js"></script>
+
+        <script defer="defer" src="js/login.js"></script>
+
     </head>
     <body>
+
         <section class="section hero is-fullheight first">
             <div class="hero-body">
                 <div class="container">
                     <div class="columns">
                         <div class="column left">
                             <h1 class="logo">eCity</h1>
-                            <p class="subtitle"><strong>eCity</strong> raccoglie su una mappa i mezzi per bike sharing e i distributori automatici. <br><br>
-                                Puoi impostare un servizio come preferito, prenotarlo o visualizzare le indicazioni per raggiungerlo.
+                            <p class="subtitle">
+                                <strong>eCity</strong>
+                                raccoglie su una mappa i mezzi per bike sharing e i distributori automatici.
+                                <br><br>
+                                Puoi impostare un servizio come preferito, prenotarlo o visualizzare le
+                                indicazioni per raggiungerlo.
                             </p>
                         </div>
                         <div class="column right">
                             <h3 class="text">Accedi o registrati!</h3>
-                            <div class="field">
+
+                        <?php 
+                            if(isset($_GET["notfound"])) {
+                                echo '<div class="field">
+                                <p class="control has-icons-left has-icons-right">
+                                    <input class="input is-danger" type="email" placeholder="Email" id="email">
+                                    <span class="icon is-small is-left">
+                                        <i class="fas fa-envelope"></i>
+                                    </span>
+                                </p>
+                                </div>
+                                <div class="field">
+                                <p class="control has-icons-left">
+                                    <input class="input is-danger" type="password" placeholder="Password (almeno 6 caratteri)" id="password">
+                                    <span class="icon is-small is-left">
+                                        <i class="fas fa-lock"></i>
+                                    </span>
+                                </p>
+                                </div>';
+                            } else {
+                                echo '<div class="field">
                                 <p class="control has-icons-left has-icons-right">
                                     <input class="input" type="email" placeholder="Email" id="email">
                                     <span class="icon is-small is-left">
@@ -48,15 +86,18 @@
                                         <i class="fas fa-lock"></i>
                                     </span>
                                 </p>
-                            </div>
+                            </div>';
+                            }
+                        ?>
+
                             <div class="field">
                                 <div class="control">
-                                  <label class="checkbox">
-                                    <input type="checkbox">
-                                    Resta collegato
-                                  </label>
+                                    <label class="checkbox">
+                                        <input type="checkbox" id="remain">
+                                        Resta collegato
+                                    </label>
                                 </div>
-                              </div>
+                            </div>
                             <div class="field is-grouped">
                                 <div class="control">
                                     <button class="button is-primary is-light is-outlined" id="login">Accedi</button>
