@@ -1,8 +1,32 @@
 <?php
     session_start();
     if(!isset($_SESSION["logged"]) && !isset($_COOKIE['logged'])) {
-        header('Location: /index.php');
+        header('Location: /');
     }
+
+    $servername = "localhost";
+    $username = "root";
+    $password = "root";
+
+    $conn = new mysqli($servername, $username, $password, "my_ecity");
+    if(!$conn) {
+        die();
+    }
+
+    if(isset($_SESSION["logged"])) {
+        $sql = "SELECT * FROM utente WHERE uid = ".$_SESSION["logged"];  
+      } else {
+          $sql = "SELECT * FROM utente WHERE uid = ".$_COOKIE["logged"];
+      }
+
+      $result = $conn->query($sql);
+
+      if ($result->num_rows > 0) {
+          $row = $result->fetch_assoc(); 
+          $nome = $row["nome"];
+          $cognome = $row["cognome"];
+          $email = $row["email"];
+      }
 ?>
 
 <!DOCTYPE html>
@@ -10,7 +34,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>eCity</title>
+        <title>eCity - Home</title>
         <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon.png">
         <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon-16x16.png">
@@ -36,12 +60,142 @@
         <link
             href='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.css'
             rel='stylesheet'/>
-
+        <script
+            src="https://cdn.rawgit.com/mgalante/jquery.redirect/master/jquery.redirect.js"></script>
         <!-- MY JS -->
         <script src="js/home.js"></script>
 
     </head>
     <body>
+
+      <?php
+        if(isset($_GET["pswChanged"])) {
+            echo '<div class="notification is-success is-light" style="    
+            width: auto;
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            z-index: 1000;
+            margin: 2em;" id="noti">
+            <button class="delete" id="closenoti"></button>
+            Password modificata con successo!
+        </div>
+        ';
+        } 
+
+        if(isset($_GET["pswNotEqual"])) {
+            echo '<div class="notification is-danger is-light" style="    
+            width: auto;
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            z-index: 1000;
+            margin: 2em;" id="noti">
+            <button class="delete" id="closenoti"></button>
+            La password attuale non è corretta. <br>
+            La password non è stata cambiata!
+        </div>
+        ';
+        } 
+
+        if(isset($_GET["dataChanged"])) {
+            echo '<div class="notification is-success is-light" style="    
+            width: auto;
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            z-index: 1000;
+            margin: 2em;" id="noti">
+            <button class="delete" id="closenoti"></button>
+            I dati sono stati modificati con successo!
+        </div>
+        ';
+        } 
+
+
+?>
+
+    <div class="modal" id="changeDataModal">
+            <div class="modal-background"></div>
+            <div class="modal-card" style="width: auto">
+                <header class="modal-card-head">
+                    <p class="modal-card-title">Modifica dati</p>
+                    <button class="delete" id="closeData" aria-label="close"></button>
+                </header>
+                <section class="modal-card-body">
+                    <div class="field">
+                        <p class="control has-icons-left has-icons-right">
+                            <?php echo '<input class="input" type="text" placeholder="Nome" id="nome" value="'.$nome.'">'; ?>
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-user"></i>
+                            </span>
+                        </p>
+                    </div>
+                    <div class="field">
+                        <p class="control has-icons-left">
+                        <?php echo '<input class="input" type="text" placeholder="Cognome" id="cognome" value="'.$cognome.'">'; ?>
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-user"></i>
+                            </span>
+                        </p>
+                    </div>
+                </section>
+                <footer class="modal-card-foot">
+                    <button class="button is-primary is-light is-outlined" id="changeData">Conferma</button>
+                    <button class="button" id="closeDataBtn">Annulla</button>
+                </footer>
+            </div>
+        </div>
+
+        <div class="modal" id="changePswModal">
+            <div class="modal-background"></div>
+            <div class="modal-card" style="width: auto">
+                <header class="modal-card-head">
+                    <p class="modal-card-title">Modifica password</p>
+                    <button class="delete" id="closePsw" aria-label="close"></button>
+                </header>
+                <section class="modal-card-body">
+                    <div class="field">
+                        <p class="control has-icons-left has-icons-right">
+                            <input class="input" type="password" placeholder="Password attuale" id="oldPsw">
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-lock"></i>
+                            </span>
+                        </p>
+                    </div>
+                    <div class="field">
+                        <p class="control has-icons-left">
+                        <input class="input" type="password" placeholder="Nuova (almeno 6 caratteri)" id="newPsw">
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-lock"></i>
+                            </span>
+                        </p>
+                    </div>
+                </section>
+                <footer class="modal-card-foot">
+                    <button class="button is-primary is-light is-outlined" id="changePsw">Conferma</button>
+                    <button class="button" id="closePswBtn">Annulla</button>
+                </footer>
+            </div>
+        </div>
+
+        <div class="modal" id="logoutModal">
+            <div class="modal-background"></div>
+            <div class="modal-card" style="width: auto">
+                <header class="modal-card-head">
+                    <p class="modal-card-title">Esci</p>
+                    <button class="delete" id="closeLogout" aria-label="close"></button>
+                </header>
+                <section class="modal-card-body">
+                    Vuoi davvero uscire?
+                </section>
+                <footer class="modal-card-foot">
+                    <button class="button is-danger is-light is-outlined" id="logout">Esci</button>
+                    <button class="button" id="closeLogoutBtn">Annulla</button>
+                </footer>
+            </div>
+        </div>
+        
         <nav class="navbar" role="navigation" aria-label="dropdown navigation">
         <style scoped>
             @media only screen and (max-width: 1024px) {
@@ -68,17 +222,17 @@
                 <div class="navbar-end">
                     <div class="navbar-item has-dropdown is-hoverable">
                         <a class="navbar-link">
-                            Ciao, Vito!
+                            Ciao, <?php echo $nome; ?>! 
                         </a>
                         <div class="navbar-dropdown is-right">
-                            <a class="navbar-item">
+                            <a class="navbar-item" id="changeDataBtn">
                                 Modifica dati
                             </a>
-                            <a class="navbar-item">
+                            <a class="navbar-item" id="changePswBtn">
                                 Modifica password
                             </a>
                             <hr class="navbar-divider">
-                                <a class="navbar-item">
+                                <a class="navbar-item" id="logoutBtn">
                                     Esci
                                 </a>
                             </div>

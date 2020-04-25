@@ -30,7 +30,7 @@
         <script
             src="https://cdn.rawgit.com/mgalante/jquery.redirect/master/jquery.redirect.js"></script>
 
-        <script defer="defer" src="js/login.js"></script>
+        <script defer="defer" src="js/index.js"></script>
 
     </head>
     <body>
