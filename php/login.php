@@ -1,6 +1,6 @@
 <?php
     $email = $_POST["email"];
-    $psw = $_POST["password"];
+    $psw = md5($_POST["password"]);
     $remain = $_POST["remain"];
 
     $servername = "localhost";
@@ -30,8 +30,6 @@
         }
     } 
 
-   header('Location: /index.php?notfound');
-
     $conn->close();
-    
+    header('Location: /index.php?notfound');
 ?>

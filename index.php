@@ -14,6 +14,9 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>eCity</title>
+        <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon-16x16.png">
         <link rel="stylesheet" href="css/style.css">
         <link
             rel="stylesheet"
@@ -35,6 +38,67 @@
     </head>
     <body>
 
+        <div class="modal" id="modal">
+            <div class="modal-background"></div>
+            <div class="modal-card" style="width: auto">
+                <header class="modal-card-head">
+                    <p class="modal-card-title">Completa la registrazione</p>
+                    <button class="delete" id="close" aria-label="close"></button>
+                </header>
+                <section class="modal-card-body">
+                    <div class="field">
+                        <p class="control has-icons-left has-icons-right">
+                            <input class="input" type="text" placeholder="Nome" id="nome">
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-user"></i>
+                            </span>
+                        </p>
+                    </div>
+                    <div class="field">
+                        <p class="control has-icons-left">
+                            <input class="input" type="text" placeholder="Cognome" id="cognome">
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-user"></i>
+                            </span>
+                        </p>
+                    </div>
+                </section>
+                <footer class="modal-card-foot">
+                    <button class="button is-primary is-light is-outlined" id="fullsignup">Continua</button>
+                </footer>
+            </div>
+        </div>
+    <?php 
+ if(isset($_GET["alreadyin"])) {
+     echo '<div class="notification is-danger is-light" style="    
+     width: auto;
+     position: fixed;
+     bottom: 0;
+     right: 0;
+     margin: 2em;" id="noti">
+     <button class="delete" id="closenoti"></button>
+     L\'utente risulta già registrato. <br>
+     Effettua l\'accesso.
+    </div>
+    ';
+ } 
+ if(isset($_GET["notfound"]))  {
+    echo '<div class="notification is-danger is-light" style="    
+    width: auto;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    margin: 2em;" id="noti">
+    <button class="delete" id="closenoti"></button>
+    L\'utente non risulta registrato. <br>
+    Effettua la registrazione.
+   </div>
+   ';
+ }
+
+?>
+
+
         <section class="section hero is-fullheight first">
             <div class="hero-body">
                 <div class="container">
@@ -53,7 +117,7 @@
                             <h3 class="text">Accedi o registrati!</h3>
 
                         <?php 
-                            if(isset($_GET["notfound"])) {
+                            if(isset($_GET["notfound"]) || isset($_GET["alreadyin"])) {
                                 echo '<div class="field">
                                 <p class="control has-icons-left has-icons-right">
                                     <input class="input is-danger" type="email" placeholder="Email" id="email">
