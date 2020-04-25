@@ -1,10 +1,7 @@
 <?php
     session_start();
-    if(isset($_SESSION["logged"])) {
-        header('Location: /home.html');
-    }
-    if(isset($_COOKIE['logged'])) {
-        header('Location: /home.html');
+    if(isset($_SESSION["logged"]) || isset($_COOKIE['logged'])) {
+        header('Location: /home.php');
     }
 ?>
 

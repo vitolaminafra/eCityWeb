@@ -1,3 +1,10 @@
+<?php
+    session_start();
+    if(!isset($_SESSION["logged"]) && !isset($_COOKIE['logged'])) {
+        header('Location: /index.php');
+    }
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -36,32 +43,50 @@
     </head>
     <body>
         <nav class="navbar" role="navigation" aria-label="dropdown navigation">
+        <style scoped>
+            @media only screen and (max-width: 1024px) {
+                a.navbar-burger {
+                    display: inline;
+                    position: absolute;
+                    right: 0;
+                    margin-top: .5em;
+                }
+            }
+        </style>
+        <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+
             <div class="navbar-brand">
                 <a class="navbar-item" href="#">
                     <h1 class="logo">eCity</h1>
                 </a>
             </div>
-            <div class="navbar-end">
-                <div class="right-item navbar-item has-dropdown is-hoverable">
-                    <a class="navbar-link">
-                        Ciao, Vito!
-                    </a>
-                    <div class="navbar-dropdown is-right">
-                        <a class="navbar-item">
-                            Modifica dati personali
+            <div class="navbar-menu">
+                <div class="navbar-end">
+                    <div class="navbar-item has-dropdown is-hoverable">
+                        <a class="navbar-link">
+                            Ciao, Vito!
                         </a>
-                        <a class="navbar-item">
-                            Modifica password
-                        </a>
-                        <hr class="navbar-divider">
-                        <a class="navbar-item">
-                            Esci
-                        </a>
+                        <div class="navbar-dropdown is-right">
+                            <a class="navbar-item">
+                                Modifica dati
+                            </a>
+                            <a class="navbar-item">
+                                Modifica password
+                            </a>
+                            <hr class="navbar-divider">
+                                <a class="navbar-item">
+                                    Esci
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </nav>
+        </nav>
 
     <div class="container">
         <div class="columns">
@@ -158,7 +183,7 @@
                     <div class="column">
                         <div class="serbtn blue">
                             <p class="btntitle"><i class="fas fa-coffee"></i> - Via E. Orabona 4</p>
-                            <p class="btnsub">500 metri</p>
+                            <p class="btnsub">500 metri - Scade fra <strong>25</strong> minuti</p>
                             <p class="btnsub2"><i class="fas fa-clock"  style="color: #3398DC;"></i></p>
                         </div>
                     </div>
