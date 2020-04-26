@@ -255,26 +255,84 @@
                         center: [
                             16.878231, 41.108205
                         ],
-                        zoom: 16
+                        zoom: 15
                     });
 
                     map.addControl(new mapboxgl.NavigationControl());
 
-                    var marker = new mapboxgl
+                    var currentPos = new mapboxgl
                         .Marker({draggable: false})
                         .setLngLat([16.878231, 41.108205])
                         .addTo(map);
+                    currentPos.getElement().childNodes[0].childNodes[0].childNodes[1].setAttribute("fill", "#F14769");
+
+                    for(var i = 2; i < 23; i++) {
+                        $.ajax({
+                        url: "/php/getLocations.php?sid="+i,
+                        type: 'get',
+                        dataType: 'JSON',
+                            success: function(response) {
+                                var sid = response["sid"];
+                                var lat = response["lat"];
+                                var lng = response["lng"];
+                                var type = response["type"];
+                            
+                                var marker = new mapboxgl
+                                    .Marker({draggable: false})
+                                    .setLngLat([lng, lat])
+                                    .addTo(map);
+
+                                marker.getElement().id = sid;
+                                marker.getElement().classList.add("marker");
+                                
+                                if(type == "bike") {
+                                    marker.getElement().childNodes[0].childNodes[0].childNodes[1].setAttribute("fill", "#01A0FB");
+                                } else {
+                                    marker.getElement().childNodes[0].childNodes[0].childNodes[1].setAttribute("fill", "#29F29B");
+                                }   
+                                //console.log(marker.getElement());
+                            }    
+                        });
+                    }
+
                 </script>
             </div>
             <div class="column right">
                 <h1 class="sectitle">Nelle vicinanze</h1>
                 <div class="columns">
                     <div class="column">
+                    <script>
+                        var nearest = [];
+
+                        for(var i = 2; i < 22; i++) {
+                            $.ajax({
+                            url: "/php/getNearLoc.php?sid="+i+"&lat=41.108205&lng=16.878231",
+                            type: 'get',
+                            dataType: 'JSON',
+                                success: function(response) {
+                                    var s = response["sid"];
+                                    var la = response["lat"];
+                                    var ln = response["lng"];
+                                    var typ = response["type"];
+                                    var dis = response["distance"];
+
+                                    var loc = {sid: s, lat: la, lng: ln, type: typ, distance: dis};
+                                    
+                                    nearest.push(loc);
+                                    // console.log(nearest);
+                                }    
+                            });
+                        }
+
+                        console.log(nearest.length);
+                    </script>
+                    <a style="color: #4A4A4A;" id="">
                         <div class="serbtn">
                             <p class="btntitle"><i class="fas fa-coffee"></i> - Via E. Orabona 4</p>
                             <p class="btnsub">500 metri</p>
                             <p class="btnsub2"><i class="fas fa-arrow-alt-circle-right"></i></p>
                         </div>
+                        </a>
                         <div class="serbtn blue">
                             <p class="btntitle"><i class="fas fa-bicycle"></i> - Via E. Orabona 4</p>
                             <p class="btnsub">500 metri</p>

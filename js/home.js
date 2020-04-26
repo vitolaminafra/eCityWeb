@@ -27,8 +27,6 @@ $( document ).ready(function() {
 
 
 
-
-
     $("#changePswBtn").click(function() {
         document.getElementById("changePswModal").classList.add("is-active");
     });
@@ -72,4 +70,5 @@ $( document ).ready(function() {
     $("#closenoti").click(function() {
         window.location.replace("/home.php");
     });
+
 });
