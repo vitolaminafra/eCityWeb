@@ -1,16 +1,9 @@
 <?php
+    require_once ($DOCUMENT_ROOT . 'php/db.php');
+
     session_start();
     if(!isset($_SESSION["logged"]) && !isset($_COOKIE['logged'])) {
         header('Location: /');
-    }
-
-    $servername = "localhost";
-    $username = "root";
-    $password = "root";
-
-    $conn = new mysqli($servername, $username, $password, "my_ecity");
-    if(!$conn) {
-        die();
     }
 
     if(isset($_SESSION["logged"])) {
@@ -67,7 +60,6 @@
 
     </head>
     <body>
-
       <?php
         if(isset($_GET["pswChanged"])) {
             echo '<div class="notification is-success is-light" style="    
@@ -111,8 +103,6 @@
         </div>
         ';
         } 
-
-
 ?>
 
     <div class="modal" id="changeDataModal">
@@ -264,6 +254,15 @@
                         .Marker({draggable: false})
                         .setLngLat([16.878231, 41.108205])
                         .addTo(map);
+
+                    if (navigator.geolocation) {
+                        navigator.geolocation.getCurrentPosition(showPosition);
+                    }
+
+                    function showPosition(position) {
+                        currentPos.setLngLat([position.coords.longitude, position.coords.latitude]);
+                    }
+
                     currentPos.getElement().childNodes[0].childNodes[0].childNodes[1].setAttribute("fill", "#F14769");
 
                     for(var i = 2; i < 23; i++) {
@@ -300,97 +299,19 @@
             <div class="column right">
                 <h1 class="sectitle">Nelle vicinanze</h1>
                 <div class="columns">
-                    <div class="column">
-                    <script>
-                        var nearest = [];
-
-                        for(var i = 2; i < 22; i++) {
-                            $.ajax({
-                            url: "/php/getNearLoc.php?sid="+i+"&lat=41.108205&lng=16.878231",
-                            type: 'get',
-                            dataType: 'JSON',
-                                success: function(response) {
-                                    var s = response["sid"];
-                                    var la = response["lat"];
-                                    var ln = response["lng"];
-                                    var typ = response["type"];
-                                    var dis = response["distance"];
-
-                                    var loc = {sid: s, lat: la, lng: ln, type: typ, distance: dis};
-                                    
-                                    nearest.push(loc);
-                                    // console.log(nearest);
-                                }    
-                            });
-                        }
-
-                        console.log(nearest.length);
-                    </script>
-                    <a style="color: #4A4A4A;" id="">
-                        <div class="serbtn">
-                            <p class="btntitle"><i class="fas fa-coffee"></i> - Via E. Orabona 4</p>
-                            <p class="btnsub">500 metri</p>
-                            <p class="btnsub2"><i class="fas fa-arrow-alt-circle-right"></i></p>
-                        </div>
-                        </a>
-                        <div class="serbtn blue">
-                            <p class="btntitle"><i class="fas fa-bicycle"></i> - Via E. Orabona 4</p>
-                            <p class="btnsub">500 metri</p>
-                            <p class="btnsub2"><i class="fas fa-arrow-alt-circle-right"></i></p>
-                        </div>
-                    </div>
-                    <div class="column">
-                        <div class="serbtn">
-                            <p class="btntitle"><i class="fas fa-coffee"></i> - Via E. Orabona 4</p>
-                            <p class="btnsub">500 metri</p>
-                            <p class="btnsub2"><i class="fas fa-arrow-alt-circle-right"></i></p>
-                        </div>
-                        <div class="serbtn blue">
-                            <p class="btntitle"><i class="fas fa-bicycle"></i> - Via E. Orabona 4</p>
-                            <p class="btnsub">500 metri</p>
-                            <p class="btnsub2"><i class="fas fa-arrow-alt-circle-right"></i></p>
-                        </div>
-                    </div>
-                    <div class="column">
-                        <div class="serbtn">
-                            <p class="btntitle"><i class="fas fa-coffee"></i> - Via E. Orabona 4</p>
-                            <p class="btnsub">500 metri</p>
-                            <p class="btnsub2"><i class="fas fa-arrow-alt-circle-right"></i></p>
-                        </div>
-                        <div class="serbtn blue">
-                            <p class="btntitle"><i class="fas fa-bicycle"></i> - Via E. Orabona 4</p>
-                            <p class="btnsub">500 metri</p>
-                            <p class="btnsub2"><i class="fas fa-arrow-alt-circle-right"></i></p>
-                        </div>
-                    </div>
+                    <?php 
+                        require ($DOCUMENT_ROOT . 'php/printNearButtons.php');
+                        
+                    ?>
                 </div>
-
-                <h1 class="sectitle">Preferiti</h1>
+                <h1 class="sectitle">Preferiti <i class="fas fa-sm fa-chevron-down"></i></h1>
                 <div class="columns">
-                    <div class="column">
-                        <div class="serbtn">
-                            <p class="btntitle"><i class="fas fa-coffee"></i> - Via E. Orabona 4</p>
-                            <p class="btnsub">500 metri</p>
-                            <p class="btnsub2"><i class="fas fa-heart" style="color: #F14769;"></i></p>
-                        </div>
-                    </div>
-                    <div class="column">
-                        <div class="serbtn blue">
-                            <p class="btntitle"><i class="fas fa-coffee"></i> - Via E. Orabona 4</p>
-                            <p class="btnsub">500 metri</p>
-                            <p class="btnsub2"><i class="fas fa-heart" style="color: #F14769;"></i></p>
-                        </div>
-                    </div>
-                    <div class="column">
-                        <div class="serbtn">
-                            <p class="btntitle"><i class="fas fa-coffee"></i> - Via E. Orabona 4</p>
-                            <p class="btnsub">500 metri</p>
-                            <p class="btnsub2"><i class="fas fa-heart" style="color: #F14769;"></i></p>
-                        </div>
-                    </div>
+                    <?php 
+                        require ($DOCUMENT_ROOT . 'php/printFavButtons.php');
+                    ?>
                 </div>
 
-                <h1 class="sectitle">Prenotati</h1>
+                <h1 class="sectitle">Prenotati <i class="fas fa-sm fa-chevron-down"></i></h1>
                 <div class="columns">
                     <div class="column">
                         <div class="serbtn blue">

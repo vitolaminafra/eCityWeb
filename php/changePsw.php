@@ -1,4 +1,6 @@
 <?php 
+    require ('db.php');
+    
     $old = md5($_POST["old"]);
     $new = md5($_POST["new"]);
     if(isset($_SESSION["logged"])) {
@@ -6,16 +8,6 @@
     } else {
         $uid = $_COOKIE["logged"];
     }
-
-    $servername = "localhost";
-    $username = "root";
-    $password = "root";
-
-    $conn = new mysqli($servername, $username, $password, "my_ecity");
-    if(!$conn) {
-        die("Not connected");
-    }
-    echo "Connected!";
 
     $sql = "SELECT * FROM utente WHERE utente.uid = $uid";
     $result = $conn->query($sql);

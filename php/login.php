@@ -1,17 +1,9 @@
 <?php
+    require ('db.php');
+
     $email = $_POST["email"];
     $psw = md5($_POST["password"]);
     $remain = $_POST["remain"];
-
-    $servername = "localhost";
-    $username = "root";
-    $password = "root";
-
-    $conn = new mysqli($servername, $username, $password, "my_ecity");
-    if(!$conn) {
-        die("Not connected");
-    }
-    echo "Connected!";
 
     $sql = "SELECT * FROM utente";
     $result = $conn->query($sql);
@@ -29,7 +21,6 @@
             }
         }
     } 
-
     $conn->close();
     header('Location: /index.php?notfound');
 ?>
