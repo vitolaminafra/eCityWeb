@@ -185,7 +185,41 @@
                 </footer>
             </div>
         </div>
-        
+
+
+        <div class="modal is-active" id="serModal">
+            <div class="modal-background"></div>
+            <div class="modal-card" style="width: 25.5em;">
+                <header class="modal-card-head">
+                    <p class="modal-card-title"><i class="fas fa-coffee"></i> - Via E. Orabona 4</p>
+                    <button class="delete" id="closeLogout" aria-label="close"></button>
+                </header>
+                <section class="modal-card-body">
+                    Tipo qua si vede la mappa!
+                </section>
+                <footer class="modal-card-foot">
+                    <button class="button is-danger is-light is-outlined" id="logout">
+                        <span class="icon is-small">
+                            <i class="fas fa-heart"></i>
+                        </span>
+                        <span>Preferito</span>
+                    </button>
+                    <button class="button is-info is-light is-outlined" id="logout">
+                        <span class="icon is-small">
+                            <i class="fas fa-bookmark"></i>
+                        </span>
+                        <span>Prenota</span>
+                    </button>
+                    <button class="button is-primary is-light is-outlined" id="logout">
+                        <span class="icon is-small">
+                            <i class="fas fa-map-signs"></i>
+                        </span>
+                        <span>Indicazioni</span>
+                    </button>
+                </footer>
+            </div>
+        </div>
+
         <nav class="navbar" role="navigation" aria-label="dropdown navigation">
         <style scoped>
             @media only screen and (max-width: 1024px) {

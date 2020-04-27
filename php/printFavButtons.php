@@ -33,7 +33,7 @@ $conn->close();
         echo '
         <div class="column">
             <div class="serbtn">
-                <a style="color: #4A4A4A;" id="'.$favs[$i]["sid"].'">
+                <a style="color: #4A4A4A;" id="'.$favs[$i]["sid"].'" class="btn">
                     <p class="btntitle"><i class="fas fa-coffee"></i> - '.$favs[$i]["ind"].'</p>
                     <p class="btnsub">'.$favs[$i]["distance"].' metri</p>
                     <p class="btnsub2"><i class="fas fa-heart" style="color: #F14769;"></i></p>
@@ -44,7 +44,7 @@ $conn->close();
         echo '
         <div class="column">
             <div class="serbtn blue">
-                <a style="color: #4A4A4A;" id="'.$favs[$i]["sid"].'">
+                <a style="color: #4A4A4A;" id="'.$favs[$i]["sid"].'" class="btn">
                     <p class="btntitle"><i class="fas fa-bicycle"></i> - '.$favs[$i]["ind"].'</p>
                     <p class="btnsub">'.$favs[$i]["distance"].' metri</p>
                     <p class="btnsub2"><i class="fas fa-heart" style="color: #F14769;"></i></p>
