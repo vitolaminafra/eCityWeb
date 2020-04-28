@@ -99,4 +99,16 @@ $( document ).ready(function() {
             }
         }    
     });
+
+    $(".btn").click(function() {
+        var serModal = document.getElementById("serModal");
+        serModal.classList.add("is-active");
+
+        
+    });
+
+    $("#closeSer").click(function() {
+        document.getElementById("serModal").classList.remove("is-active");
+    });
+
 });

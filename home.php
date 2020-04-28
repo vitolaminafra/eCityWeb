@@ -191,26 +191,26 @@
             <div class="modal-background"></div>
             <div class="modal-card" style="width: 25.5em;">
                 <header class="modal-card-head">
-                    <p class="modal-card-title"><i class="fas fa-coffee"></i> - Via E. Orabona 4</p>
-                    <button class="delete" id="closeLogout" aria-label="close"></button>
+                    <p class="modal-card-title" id="modalTitle"></p>
+                    <button class="delete" id="closeSer" aria-label="close"></button>
                 </header>
                 <section class="modal-card-body">
                     Tipo qua si vede la mappa!
                 </section>
                 <footer class="modal-card-foot">
-                    <button class="button is-danger is-light is-outlined" id="logout">
+                    <button class="button is-danger is-light is-outlined" id="setFav">
                         <span class="icon is-small">
                             <i class="fas fa-heart"></i>
                         </span>
                         <span>Preferito</span>
                     </button>
-                    <button class="button is-info is-light is-outlined" id="logout">
+                    <button class="button is-info is-light is-outlined" id="serBook">
                         <span class="icon is-small">
                             <i class="fas fa-bookmark"></i>
                         </span>
                         <span>Prenota</span>
                     </button>
-                    <button class="button is-primary is-light is-outlined" id="logout">
+                    <button class="button is-primary is-light is-outlined" id="setMap">
                         <span class="icon is-small">
                             <i class="fas fa-map-signs"></i>
                         </span>
@@ -323,7 +323,6 @@
                                 } else {
                                     marker.getElement().childNodes[0].childNodes[0].childNodes[1].setAttribute("fill", "#29F29B");
                                 }   
-                                //console.log(marker.getElement());
                             }    
                         });
                     }
@@ -331,21 +330,21 @@
                 </script>
             </div>
             <div class="column right">
-                <h1 class="sectitle">Nelle vicinanze</h1>
+                <h1 class="sectitle">Nelle vicinanze <i class="fas fa-xs fa-chevron-down"></i></h1>
                 <div class="columns">
                     <?php 
                         require ($DOCUMENT_ROOT . 'php/printNearButtons.php');
                         
                     ?>
                 </div>
-                <h1 class="sectitle">Preferiti <i class="fas fa-sm fa-chevron-down"></i></h1>
+                <h1 class="sectitle">Preferiti <i class="fas fa-xs fa-chevron-down"></i></h1>
                 <div class="columns">
                     <?php 
                         require ($DOCUMENT_ROOT . 'php/printFavButtons.php');
                     ?>
                 </div>
 
-                <h1 class="sectitle">Prenotati <i class="fas fa-sm fa-chevron-down"></i></h1>
+                <h1 class="sectitle">Prenotati <i class="fas fa-xs fa-chevron-down"></i></h1>
                 <div class="columns">
                     <div class="column">
                         <div class="serbtn blue">

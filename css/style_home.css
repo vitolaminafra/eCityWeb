@@ -64,8 +64,6 @@ div.right {
         margin-bottom: 1em;
         margin-left: -1em;
         transition: border-left .2s;
-        position: relative;
-        z-index: -100;
     }
     
     div.serbtn:hover {
