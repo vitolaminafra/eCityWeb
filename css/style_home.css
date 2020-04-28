@@ -19,6 +19,10 @@ div.right {
     margin-left:2em
 }
 
+p.modal-card-title {
+    font-family: "EinaSemiBold";
+}
+
 @media only screen and (max-width: 600px) {
 
     div.container {
@@ -238,5 +242,9 @@ div.right {
         font-family: "EinaRegular";
         font-size: 1.3em;
         text-align: right;
+    }
+
+    div.serModal {
+        width: 30%;
     }
 }

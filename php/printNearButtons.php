@@ -67,14 +67,14 @@
         <div class="column">
             <div class="serbtn">
                 <a style="color: #4A4A4A;" id="'.$vends[$i]["sid"].'" class="btn">
-                    <p class="btntitle"><i class="fas fa-coffee"></i> - '.$vends[$i]["ind"].'</p>
+                    <p class="btntitle"><i class="fas fa-coffee"></i> '.$vends[$i]["ind"].'</p>
                     <p class="btnsub">'.$vends[$i]["distance"].' metri</p>
                     <p class="btnsub2"><i class="fas fa-arrow-alt-circle-right"></i></p>
                 </a>
             </div>
             <div class="serbtn blue">
                 <a style="color: #4A4A4A;" id="'.$bikes[$i]["sid"].'" class="btn">
-                    <p class="btntitle"><i class="fas fa-bicycle"></i> - '.$bikes[$i]["ind"].'</p>
+                    <p class="btntitle"><i class="fas fa-bicycle"></i> '.$bikes[$i]["ind"].'</p>
                     <p class="btnsub">'.$bikes[$i]["distance"].' metri</p>
                     <p class="btnsub2"><i class="fas fa-arrow-alt-circle-right"></i></p>
                 </a>

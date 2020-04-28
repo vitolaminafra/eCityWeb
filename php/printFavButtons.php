@@ -28,13 +28,19 @@ $lng = 16.878231;
 
 $conn->close();
 
-  for($i = 0; $i < count($favs); $i++) {
+    if(count($favs) > 3) {
+        $n = 3;
+    } else {
+        $n = count($favs);
+    }
+
+  for($i = 0; $i < $n; $i++) {
     if($favs[$i]["type"] == "vend") {
         echo '
         <div class="column">
             <div class="serbtn">
                 <a style="color: #4A4A4A;" id="'.$favs[$i]["sid"].'" class="btn">
-                    <p class="btntitle"><i class="fas fa-coffee"></i> - '.$favs[$i]["ind"].'</p>
+                    <p class="btntitle"><i class="fas fa-coffee"></i> '.$favs[$i]["ind"].'</p>
                     <p class="btnsub">'.$favs[$i]["distance"].' metri</p>
                     <p class="btnsub2"><i class="fas fa-heart" style="color: #F14769;"></i></p>
                 </a>
@@ -45,13 +51,16 @@ $conn->close();
         <div class="column">
             <div class="serbtn blue">
                 <a style="color: #4A4A4A;" id="'.$favs[$i]["sid"].'" class="btn">
-                    <p class="btntitle"><i class="fas fa-bicycle"></i> - '.$favs[$i]["ind"].'</p>
+                    <p class="btntitle"><i class="fas fa-bicycle"></i> '.$favs[$i]["ind"].'</p>
                     <p class="btnsub">'.$favs[$i]["distance"].' metri</p>
                     <p class="btnsub2"><i class="fas fa-heart" style="color: #F14769;"></i></p>
                 </a>
             </div>
         </div>';
     }
-}  
+} 
+if($n == 2) {
+    echo '<div class="column"></div>';
+}
     
 ?>

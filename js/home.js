@@ -72,7 +72,7 @@ $( document ).ready(function() {
     });
 
     // CAMBIO COLORE DEI MARKER QUANDO IL MOUSE PASSA SU UN PULSANTE
-    $(".btn").mouseenter(function() {
+/*     $(".btn").mouseenter(function() {
         var id = $(this).attr("id");
         for(var i = 2; i < 23; i++) {
             if(id != i) {
@@ -80,7 +80,7 @@ $( document ).ready(function() {
                 var marker = ".marker#" + sid; 
                 var elem = $(marker).children().children().children()[1];
                 var prevColor = $(elem).attr("fill");
-                var newColor = prevColor + "35";
+                var newColor = prevColor + "25";
                 $(elem).attr("fill", newColor);
             }
         }    
@@ -98,17 +98,78 @@ $( document ).ready(function() {
                 $(elem).attr("fill", newColor);
             }
         }    
+    }); */
+
+    // APERTURA MODAL AL CLICK DI UN PULSANTE E IMPOSTO ID
+    $(".btn").click(function() {
+        var id = $(this).attr("id");
+
+        $.ajax({
+            url: "php/checkFav.php?sid="+id,
+            type: 'get',
+            dataType: 'text',
+                success: function(response) {
+                    if(response != 0) {
+                        $(".setFav").attr("remove", "true");
+                        $(".favText").text("Rimuovi");
+                    } else {
+                        $(".setFav").attr("remove", "false");
+                        $(".favText").text("Preferito");
+                    }
+                }
+        });
+
+        $.ajax({
+            url: "/php/getLocations.php?sid="+id,
+            type: 'get',
+            dataType: 'JSON',
+                success: function(response) {
+                    var sid = response["sid"];
+                    var lat = response["lat"];
+                    var lng = response["lng"];
+                    var type = response["type"];
+                    var ind = response["ind"];
+
+                    $(".setFav").attr('id', sid);
+                    $(".setBook").attr('id', sid);
+                    $(".setMap").attr('id', sid);
+
+                    $(".setMap").attr('lat', lat);
+                    $(".setMap").attr('lng', lng);
+
+                    if(type == "bike") {
+                        $(document.getElementById("bikeModalTitle")).text(ind);
+                        document.getElementById("bikeModal").classList.add("is-active");
+                    } else {
+                        $(document.getElementById("vendModalTitle")).text(ind);
+                        document.getElementById("vendModal").classList.add("is-active");
+                    }
+                }    
+            });
     });
 
-    $(".btn").click(function() {
-        var serModal = document.getElementById("serModal");
-        serModal.classList.add("is-active");
+    $("#closeBike").click(function() {
+        document.getElementById("bikeModal").classList.remove("is-active");
+    });
 
+    $("#closeVend").click(function() {
+        document.getElementById("vendModal").classList.remove("is-active");
+    });
+
+    $(".setFav").click(function() {
+        var sid = $(this).attr("id");
+        var remove = $(this).attr("remove");
+        if(remove == "false")
+            $.redirect('/php/addFav.php', {'sid': sid});
+        else
+            $.redirect('/php/remFav.php', {'sid': sid});
         
     });
 
-    $("#closeSer").click(function() {
-        document.getElementById("serModal").classList.remove("is-active");
-    });
+    $(".setMap").click(function() {
+        var lat = $(this).attr("lat");
+        var lng = $(this).attr("lng");
 
+        window.open('http://maps.google.com/maps?q='+ lat + ',' + lng + '', '_blank');
+    });
 });

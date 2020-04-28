@@ -103,6 +103,36 @@
         </div>
         ';
         } 
+
+        if(isset($_GET["newFav"])) {
+            echo '<div class="notification is-success is-light" style="    
+            width: auto;
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            z-index: 1000;
+            margin: 2em;" id="noti">
+            <button class="delete" id="closenoti"></button>
+            Preferito aggiunto con successo!
+        </div>
+        ';
+        } 
+
+        if(isset($_GET["remFav"])) {
+            echo '<div class="notification is-success is-light" style="    
+            width: auto;
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            z-index: 1000;
+            margin: 2em;" id="noti">
+            <button class="delete" id="closenoti"></button>
+            Preferito rimosso con successo!
+        </div>
+        ';
+        } 
+
+        
 ?>
 
     <div class="modal" id="changeDataModal">
@@ -187,30 +217,59 @@
         </div>
 
 
-        <div class="modal" id="serModal">
+        <div class="modal" id="bikeModal">
             <div class="modal-background"></div>
-            <div class="modal-card" style="width: 25.5em;">
+            <div class="modal-card serModal">
                 <header class="modal-card-head">
-                    <p class="modal-card-title" id="modalTitle"></p>
-                    <button class="delete" id="closeSer" aria-label="close"></button>
+                    <i class="fas fa-bicycle" style="font-size: 1.5rem; line-height: 1; margin-right: 0.4em;"></i>
+                    <p class="modal-card-title" id="bikeModalTitle"></p>
+                    <button class="delete" id="closeBike" aria-label="close"></button>
                 </header>
                 <section class="modal-card-body">
                     Tipo qua si vede la mappa!
                 </section>
                 <footer class="modal-card-foot">
-                    <button class="button is-danger is-light is-outlined" id="setFav">
+                    <button class="button is-danger is-light is-outlined setFav" id="">
                         <span class="icon is-small">
                             <i class="fas fa-heart"></i>
                         </span>
-                        <span>Preferito</span>
+                        <span class="favText"></span>
                     </button>
-                    <button class="button is-info is-light is-outlined" id="serBook">
+                    <button class="button is-info is-light is-outlined setBook" id="">
                         <span class="icon is-small">
                             <i class="fas fa-bookmark"></i>
                         </span>
                         <span>Prenota</span>
                     </button>
-                    <button class="button is-primary is-light is-outlined" id="setMap">
+                    <button class="button is-primary is-light is-outlined setMap" id="">
+                        <span class="icon is-small">
+                            <i class="fas fa-map-signs"></i>
+                        </span>
+                        <span>Indicazioni</span>
+                    </button>
+                </footer>
+            </div>
+        </div>
+
+        <div class="modal" id="vendModal">
+            <div class="modal-background"></div>
+            <div class="modal-card serModal"">
+                <header class="modal-card-head">
+                    <i class="fas fa-coffee" style="font-size: 1.5rem; line-height: 1; margin-right: 0.4em;"></i>
+                    <p class="modal-card-title" id="vendModalTitle"></p>
+                    <button class="delete" id="closeVend" aria-label="close"></button>
+                </header>
+                <section class="modal-card-body">
+                    Tipo qua si vede la mappa!
+                </section>
+                <footer class="modal-card-foot">
+                    <button class="button is-danger is-light is-outlined setFav" id="">
+                        <span class="icon is-small">
+                            <i class="fas fa-heart"></i>
+                        </span>
+                        <span class="favText"></span>
+                    </button>
+                    <button class="button is-primary is-light is-outlined setMap" id="">
                         <span class="icon is-small">
                             <i class="fas fa-map-signs"></i>
                         </span>
@@ -330,21 +389,21 @@
                 </script>
             </div>
             <div class="column right">
-                <h1 class="sectitle">Nelle vicinanze <i class="fas fa-xs fa-chevron-down"></i></h1>
+                <h1 class="sectitle">Nelle vicinanze ...</h1>
                 <div class="columns">
                     <?php 
                         require ($DOCUMENT_ROOT . 'php/printNearButtons.php');
                         
                     ?>
                 </div>
-                <h1 class="sectitle">Preferiti <i class="fas fa-xs fa-chevron-down"></i></h1>
+                <h1 class="sectitle">Preferiti ...</h1>
                 <div class="columns">
                     <?php 
                         require ($DOCUMENT_ROOT . 'php/printFavButtons.php');
                     ?>
                 </div>
 
-                <h1 class="sectitle">Prenotati <i class="fas fa-xs fa-chevron-down"></i></h1>
+                <h1 class="sectitle">Prenotati ...</h1>
                 <div class="columns">
                     <div class="column">
                         <div class="serbtn blue">
