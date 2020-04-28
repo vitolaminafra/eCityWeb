@@ -405,13 +405,9 @@
 
                 <h1 class="sectitle">Prenotati ...</h1>
                 <div class="columns">
-                    <div class="column">
-                        <div class="serbtn blue">
-                            <p class="btntitle"><i class="fas fa-coffee"></i> - Via E. Orabona 4</p>
-                            <p class="btnsub">500 metri - Scade fra <strong>25</strong> minuti</p>
-                            <p class="btnsub2"><i class="fas fa-clock"  style="color: #3398DC;"></i></p>
-                        </div>
-                    </div>
+                    <?php 
+                        require ($DOCUMENT_ROOT . 'php/printBookedButtons.php');
+                    ?>
                 </div>
 
             </div>

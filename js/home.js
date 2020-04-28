@@ -172,4 +172,5 @@ $( document ).ready(function() {
 
         window.open('http://maps.google.com/maps?q='+ lat + ',' + lng + '', '_blank');
     });
+
 });
