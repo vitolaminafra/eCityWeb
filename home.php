@@ -187,7 +187,7 @@
         </div>
 
 
-        <div class="modal is-active" id="serModal">
+        <div class="modal" id="serModal">
             <div class="modal-background"></div>
             <div class="modal-card" style="width: 25.5em;">
                 <header class="modal-card-head">
@@ -309,7 +309,7 @@
                                 var lat = response["lat"];
                                 var lng = response["lng"];
                                 var type = response["type"];
-                            
+                                
                                 var marker = new mapboxgl
                                     .Marker({draggable: false})
                                     .setLngLat([lng, lat])

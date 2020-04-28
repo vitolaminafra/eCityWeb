@@ -1,9 +1,6 @@
 <?php
     require ('db.php');
-
-    $lat = $_GET["lat"];
-    $lng = $_GET["lng"];
-
+    
     $sid = $_GET["sid"];
 
     $sql = "SELECT * FROM servizio WHERE sid = '".$sid."'";
