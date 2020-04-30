@@ -253,7 +253,26 @@
                     <button class="delete" id="closeBike" aria-label="close"></button>
                 </header>
                 <section class="modal-card-body">
-                    Tipo qua si vede la mappa!
+                    <div id="bikemap" style="height: 25em; "></div>
+                    <script>
+                    mapboxgl.accessToken = 'pk.eyJ1Ijoidml0b2xhbSIsImEiOiJjajYwcGk1cnEwbHBtMzJueWV6YmM2N2M1In0.Aq6CkjudAJH' +
+                            'X1PymrhEb6Q';
+                    var bikemap = new mapboxgl.Map({
+                        container: 'bikemap',
+                        style: 'mapbox://styles/mapbox/light-v9',
+                        center: [
+                            16.878231, 41.108205
+                        ],
+                        zoom: 15
+                    });
+
+                    var currentBikePos = new mapboxgl
+                        .Marker({draggable: false})
+                        .setLngLat([16.878231, 41.108205])
+                        .addTo(bikemap);
+
+                    currentBikePos.getElement().childNodes[0].childNodes[0].childNodes[1].setAttribute("fill", "#F14769");
+                    </script>
                 </section>
                 <footer class="modal-card-foot">
                     <button class="button is-danger is-light is-outlined setFav" id="">
@@ -287,7 +306,26 @@
                     <button class="delete" id="closeVend" aria-label="close"></button>
                 </header>
                 <section class="modal-card-body">
-                    Tipo qua si vede la mappa!
+                <div id="vendmap" style="height: 25em; "></div>
+                    <script>
+                        mapboxgl.accessToken = 'pk.eyJ1Ijoidml0b2xhbSIsImEiOiJjajYwcGk1cnEwbHBtMzJueWV6YmM2N2M1In0.Aq6CkjudAJH' +
+                                'X1PymrhEb6Q';
+                        var vendmap = new mapboxgl.Map({
+                            container: 'vendmap',
+                            style: 'mapbox://styles/mapbox/light-v9',
+                            center: [
+                                16.878231, 41.108205
+                            ],
+                            zoom: 15
+                        });
+
+                        var currentVendPos = new mapboxgl
+                            .Marker({draggable: false})
+                            .setLngLat([16.878231, 41.108205])
+                            .addTo(vendmap);
+
+                        currentVendPos.getElement().childNodes[0].childNodes[0].childNodes[1].setAttribute("fill", "#F14769");
+                    </script>
                 </section>
                 <footer class="modal-card-foot">
                     <button class="button is-danger is-light is-outlined setFav" id="">

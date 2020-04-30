@@ -1,4 +1,17 @@
 $( document ).ready(function() {
+    var bikePos = new mapboxgl
+    .Marker({draggable: false})
+    .setLngLat([0, 0])
+    .addTo(bikemap);
+    bikePos.getElement().childNodes[0].childNodes[0].childNodes[1].setAttribute("fill", "#01A0FB");
+
+    var vendPos = new mapboxgl
+    .Marker({draggable: false})
+    .setLngLat([0, 0])
+    .addTo(vendmap);
+    vendPos.getElement().childNodes[0].childNodes[0].childNodes[1].setAttribute("fill", "#29F29B");
+
+
     // TRASFORMAZIONE DEL PULSANTE "BURGER" NEL CASO DI DISPOSITIVI MOBILE
     $(".navbar-burger").click(function() {
         $(".navbar-burger").toggleClass("is-active");
@@ -102,10 +115,16 @@ $( document ).ready(function() {
 
     // APERTURA MODAL AL CLICK DI UN PULSANTE E IMPOSTO ID
     $(".btn").click(function() {
-        var id = $(this).attr("id");
+        var sid = $(this).attr("id");
+
+        bikemap.setZoom(15);
+        bikemap.setCenter([16.878231, 41.108205]);
+
+        vendmap.setZoom(15);
+        vendmap.setCenter([16.878231, 41.108205]);
 
         $.ajax({
-            url: "php/checkFav.php?sid="+id,
+            url: "php/checkFav.php?sid="+sid,
             type: 'get',
             dataType: 'text',
                 success: function(response) {
@@ -120,7 +139,7 @@ $( document ).ready(function() {
         });
 
         $.ajax({
-            url: "php/checkBook.php?sid="+id,
+            url: "php/checkBook.php?sid="+sid,
             type: 'get',
             dataType: 'text',
                 success: function(response) {
@@ -139,7 +158,7 @@ $( document ).ready(function() {
         });
 
         $.ajax({
-            url: "/php/getLocations.php?sid="+id,
+            url: "/php/getLocations.php?sid="+sid,
             type: 'get',
             dataType: 'JSON',
                 success: function(response) {
@@ -157,9 +176,11 @@ $( document ).ready(function() {
 
                     if(type == "bike") {
                         $(document.getElementById("bikeModalTitle")).text(ind);
+                        bikePos.setLngLat([lng, lat]);
                         document.getElementById("bikeModal").classList.add("is-active");
                     } else {
                         $(document.getElementById("vendModalTitle")).text(ind);
+                        vendPos.setLngLat([lng, lat]);
                         document.getElementById("vendModal").classList.add("is-active");
                     }
                 }    
