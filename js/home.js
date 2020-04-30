@@ -120,6 +120,25 @@ $( document ).ready(function() {
         });
 
         $.ajax({
+            url: "php/checkBook.php?sid="+id,
+            type: 'get',
+            dataType: 'text',
+                success: function(response) {
+                    $(".bookText").text(response);
+
+                    if(response == 'Cancella pren.') {
+                        $(".setBook").removeAttr("disabled");
+                    } 
+                    if(response == 'Non disponibile') {
+                        $(".setBook").attr("disabled", "");
+                    } 
+                    if(response == 'Prenota') {
+                        $(".setBook").removeAttr("disabled");
+                    } 
+                }
+        });
+
+        $.ajax({
             url: "/php/getLocations.php?sid="+id,
             type: 'get',
             dataType: 'JSON',
@@ -133,7 +152,6 @@ $( document ).ready(function() {
                     $(".setFav").attr('id', sid);
                     $(".setBook").attr('id', sid);
                     $(".setMap").attr('id', sid);
-
                     $(".setMap").attr('lat', lat);
                     $(".setMap").attr('lng', lng);
 
@@ -163,7 +181,6 @@ $( document ).ready(function() {
             $.redirect('/php/addFav.php', {'sid': sid});
         else
             $.redirect('/php/remFav.php', {'sid': sid});
-        
     });
 
     $(".setMap").click(function() {
@@ -172,5 +189,24 @@ $( document ).ready(function() {
 
         window.open('http://maps.google.com/maps?q='+ lat + ',' + lng + '', '_blank');
     });
+
+    $(".setBook").click(function() {
+        var sid = $(this).attr("id");
+        var status = $(this).attr("pren");
+        $.ajax({
+            url: "php/checkBook.php?sid="+sid,
+            type: 'get',
+            dataType: 'text',
+                success: function(response) {
+                    if(response == 'Cancella pren.') {
+                        $.redirect('/php/remBook.php', {'sid': sid});
+                    } 
+                    if(response == 'Prenota') {
+                        $.redirect('/php/addBook.php', {'sid': sid});
+                    } 
+                }
+        });
+    });
+
 
 });

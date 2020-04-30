@@ -132,6 +132,33 @@
         ';
         } 
 
+        if(isset($_GET["remBook"])) {
+            echo '<div class="notification is-success is-light" style="    
+            width: auto;
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            z-index: 1000;
+            margin: 2em;" id="noti">
+            <button class="delete" id="closenoti"></button>
+            Prenotazione cancellata con successo!
+        </div>
+        ';
+        } 
+
+        if(isset($_GET["newBook"])) {
+            echo '<div class="notification is-success is-light" style="    
+            width: auto;
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            z-index: 1000;
+            margin: 2em;" id="noti">
+            <button class="delete" id="closenoti"></button>
+            Prenotazione aggiunta con successo!
+        </div>
+        ';
+        } 
         
 ?>
 
@@ -239,7 +266,7 @@
                         <span class="icon is-small">
                             <i class="fas fa-bookmark"></i>
                         </span>
-                        <span>Prenota</span>
+                        <span class="bookText"></span>
                     </button>
                     <button class="button is-primary is-light is-outlined setMap" id="">
                         <span class="icon is-small">
