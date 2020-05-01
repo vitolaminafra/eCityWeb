@@ -7,4 +7,6 @@
     if(!$conn) {
         die("Not connected");
     }
+
+    session_start();
 ?>
