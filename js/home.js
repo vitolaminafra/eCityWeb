@@ -294,7 +294,7 @@ $( document ).ready(function() {
                     if(response == 'Cancella') {
                         $(".setBook").removeAttr("disabled");
                     } 
-                    if(response == 'Non disp.') {
+                    if(response == 'Non disponibile') {
                         $(".setBook").attr("disabled", "");
                     } 
                     if(response == 'Prenota') {
