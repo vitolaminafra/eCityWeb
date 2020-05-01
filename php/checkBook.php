@@ -16,7 +16,7 @@
         if($row['uid'] == $uid) {
             $return = "Cancella";
         } else {
-            $return = "Non disponibile";
+            $return = "Non disp.";
         }
     } else {
         $return = "Prenota";
