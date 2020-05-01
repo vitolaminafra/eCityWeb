@@ -1,7 +1,6 @@
 <?php
     require ($DOCUMENT_ROOT . 'php/db.php');
 
-    session_start();
     if(!isset($_SESSION["logged"]) && !isset($_COOKIE['logged'])) {
         header('Location: /');
     }
