@@ -45,9 +45,9 @@
     for($i = 0; $i < count($booked); $i++) {
         if($booked[$i]["attivo"] == "true") {
             echo '
-            <a class="listClick" style="color: #4A4A4A;" id="'.$favs[$i]['sid'].'">
+            <a class="listClick" style="color: #4A4A4A;" id="'.$booked[$i]['sid'].'">
                 <div class="listElem blue">
-                    <p class="elemTitle"><i class="fas fa-bicycle"></i> '.$favs[$i]['ind'].'</p>
+                    <p class="elemTitle"><i class="fas fa-bicycle"></i> '.$booked[$i]['ind'].'</p>
                     <p class="elemSub">'.$booked[$i]["distance"].' metri - Scade tra <strong>'.$time.'</strong> minuti</p>
                     <p class="elemSub2"><i class="fas fa-bookmark" style="color: #3398DC;"></i></p>
                 </div>
@@ -55,9 +55,9 @@
             ';
         } else {
             echo '
-            <a class="listClick" style="color: #4A4A4A;" id="'.$favs[$i]['sid'].'">
+            <a class="listClick" style="color: #4A4A4A;" id="'.$booked[$i]['sid'].'">
                 <div class="listElem blue">
-                    <p class="elemTitle"><i class="fas fa-coffee"></i> '.$favs[$i]['ind'].'</p>
+                    <p class="elemTitle"><i class="fas fa-bicycle"></i> '.$booked[$i]['ind'].'</p>
                     <p class="elemSub">'.$booked[$i]["distance"].' metri - Scade tra <strong>Scaduto</strong></p>
                     <p class="elemSub2"><i class="fas fa-bookmark" style="color: #3398DC;"></i></p>
                 </div>
