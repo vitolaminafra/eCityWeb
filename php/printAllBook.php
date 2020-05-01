@@ -42,36 +42,29 @@
           if($time == 0) $time = 1;
 
 
+    for($i = 0; $i < count($booked); $i++) {
         if($booked[$i]["attivo"] == "true") {
             echo '
-            <div class="column">
-                <div class="serbtn blue">
-                    <a style="color: #4A4A4A;" id="'.$booked[$i]["sid"].'" pid="'.$booked[$i]["pid"].'" class="btn">
-                        <p class="btntitle"><i class="fas fa-bicycle"></i> '.$booked[$i]["ind"].'</p>
-                        <p class="btnsub">'.$booked[$i]["distance"].' metri - Scade tra <strong>'.$time.'</strong> minuti</p>
-                        <p class="btnsub2"><i class="fas fa-bookmark" style="color: #3398DC;"></i></p>
-                    </a>
+            <a class="listClick" style="color: #4A4A4A;" id="'.$favs[$i]['sid'].'">
+                <div class="listElem blue">
+                    <p class="elemTitle"><i class="fas fa-bicycle"></i> '.$favs[$i]['ind'].'</p>
+                    <p class="elemSub">'.$booked[$i]["distance"].' metri - Scade tra <strong>'.$time.'</strong> minuti</p>
+                    <p class="elemSub2"><i class="fas fa-bookmark" style="color: #3398DC;"></i></p>
                 </div>
-            </div>';
+            </a>
+            ';
         } else {
             echo '
-            <div class="column">
-                <div class="serbtn blue">
-                    <a style="color: #4A4A4A;" id="'.$booked[$i]["sid"].'" pid="'.$booked[$i]["pid"].'" class="btn">
-                        <p class="btntitle"><i class="fas fa-bicycle"></i> '.$booked[$i]["ind"].'</p>
-                        <p class="btnsub">'.$booked[$i]["distance"].' metri - <strong>Scaduto</strong></p>
-                        <p class="btnsub2"><i class="fas fa-bookmark" style="color: #3398DC;"></i></p>
-                    </a>
+            <a class="listClick" style="color: #4A4A4A;" id="'.$favs[$i]['sid'].'">
+                <div class="listElem blue">
+                    <p class="elemTitle"><i class="fas fa-coffee"></i> '.$favs[$i]['ind'].'</p>
+                    <p class="elemSub">'.$booked[$i]["distance"].' metri - Scade tra <strong>Scaduto</strong></p>
+                    <p class="elemSub2"><i class="fas fa-bookmark" style="color: #3398DC;"></i></p>
                 </div>
-            </div>';
+            </a>
+            ';
         }
-    } 
-    if($n == 2) {
-        echo '<div class="column"></div>';
     }
+} 
 
-
-
-
-
-?> 
+?>

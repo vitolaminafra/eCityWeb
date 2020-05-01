@@ -23,6 +23,44 @@ p.modal-card-title {
     font-family: "EinaSemiBold";
 }
 
+div.listElem {
+    border-left: 5px solid #29F29B;
+    box-shadow:  1px 1px 2px #d9d9d9, 
+    -1px -1px 2px #d9d9d9;
+    border-radius: 15px;
+    padding: 1em;
+    transition: border-left .2s ;
+    margin-bottom: 1em;
+}
+
+div.listElem:hover {
+    border-left: 8px solid #29F29B;
+}
+
+div.blue {
+    border-left: 5px solid #01A0FB;
+}
+
+div.blue:hover {
+    border-left: 8px solid #01A0FB;
+}
+
+p.elemTitle {
+    font-family: "Einasemibold";
+    font-size: 1.1em;
+}
+
+p.elemSub {
+    font-family: "EinaRegular";
+    font-size: 1.05em;
+}
+
+p.elemSub2 {
+    font-family: "EinaRegular";
+    font-size: 1em;
+    text-align: right;
+}
+
 @media only screen and (max-width: 600px) {
 
     div.container {
@@ -40,22 +78,28 @@ p.modal-card-title {
         margin-left: 0.2em;
     
         background: -webkit-linear-gradient(#29F29B, #01A0FB);
+        background-clip: text;
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
     }
 
     #map {
+        margin-top: 1em;
         height: 25rem;
         width: 100%;
-    
         border-radius: 25px;
+        box-shadow:  3px 3px 5px #d9d9d9, -3px -3px 5px #d9d9d9;
     }
     
     h1.sectitle {
         font-family: "EinaSemibold";
-        font-size: 1em;
+        font-size: 1.1em;
         margin-left: -2em;
         margin-bottom: .8em;
+    }
+
+    h1.top {
+        margin-top: 1em;
     }
 
     div.serbtn {
@@ -117,13 +161,14 @@ p.modal-card-title {
     
         background: -webkit-linear-gradient(#29F29B, #01A0FB);
         -webkit-background-clip: text;
+        background-clip: text;
         -webkit-text-fill-color: transparent;
     }
 
     #map {
         height: 35rem;
         width: 40em;
-    
+        box-shadow:  3px 3px 5px #d9d9d9, -3px -3px 5px #d9d9d9;
         border-radius: 25px;
     }
     
@@ -187,13 +232,14 @@ p.modal-card-title {
     
         background: -webkit-linear-gradient(#29F29B, #01A0FB);
         -webkit-background-clip: text;
+        background-clip: text;
         -webkit-text-fill-color: transparent;
     }
 
     #map {
         height: 47rem;
         width: 40em;
-    
+        box-shadow:  3px 3px 5px #d9d9d9, -3px -3px 5px #d9d9d9;
         border-radius: 25px;
     }
     

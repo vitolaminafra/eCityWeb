@@ -14,7 +14,7 @@
     if($result->num_rows > 0) {
         $row = $result->fetch_assoc();
         if($row['uid'] == $uid) {
-            $return = "Cancella pren.";
+            $return = "Cancella";
         } else {
             $return = "Non disponibile";
         }

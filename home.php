@@ -1,5 +1,5 @@
 <?php
-    require_once ($DOCUMENT_ROOT . 'php/db.php');
+    require ($DOCUMENT_ROOT . 'php/db.php');
 
     session_start();
     if(!isset($_SESSION["logged"]) && !isset($_COOKIE['logged'])) {
@@ -243,6 +243,50 @@
             </div>
         </div>
 
+        <div class="modal" id="nearList">
+            <div class="modal-background"></div>
+            <div class="modal-card" style="width: 25em;">
+                <header class="modal-card-head">
+                    <p class="modal-card-title">Nelle vicinanze</p>
+                    <button class="delete" id="closeNear" aria-label="close"></button>
+                </header>
+                <section class="modal-card-body">
+                        <?php 
+                            require ($DOCUMENT_ROOT . 'php/printAllNear.php'); 
+                        ?>
+                </section>
+            </div>
+        </div>
+
+        <div class="modal" id="favList">
+            <div class="modal-background"></div>
+            <div class="modal-card" style="width: 25em;">
+                <header class="modal-card-head">
+                    <p class="modal-card-title">Preferiti</p>
+                    <button class="delete" id="closeFav" aria-label="close"></button>
+                </header>
+                <section class="modal-card-body">
+                        <?php 
+                            require ($DOCUMENT_ROOT . 'php/printAllFav.php'); 
+                        ?>
+                </section>
+            </div>
+        </div>
+
+        <div class="modal" id="bookList">
+            <div class="modal-background"></div>
+            <div class="modal-card" style="width: 25em;">
+                <header class="modal-card-head">
+                    <p class="modal-card-title">Prenotati</p>
+                    <button class="delete" id="closeBook" aria-label="close"></button>
+                </header>
+                <section class="modal-card-body">
+                        <?php 
+                            require ($DOCUMENT_ROOT . 'php/printAllBook.php'); 
+                        ?>
+                </section>
+            </div>
+        </div>
 
         <div class="modal" id="bikeModal">
             <div class="modal-background"></div>
@@ -299,7 +343,7 @@
 
         <div class="modal" id="vendModal">
             <div class="modal-background"></div>
-            <div class="modal-card serModal"">
+            <div class="modal-card serModal">
                 <header class="modal-card-head">
                     <i class="fas fa-coffee" style="font-size: 1.5rem; line-height: 1; margin-right: 0.4em;"></i>
                     <p class="modal-card-title" id="vendModalTitle"></p>
@@ -413,14 +457,6 @@
                         .setLngLat([16.878231, 41.108205])
                         .addTo(map);
 
-                    if (navigator.geolocation) {
-                        navigator.geolocation.getCurrentPosition(showPosition);
-                    }
-
-                    function showPosition(position) {
-                        currentPos.setLngLat([position.coords.longitude, position.coords.latitude]);
-                    }
-
                     currentPos.getElement().childNodes[0].childNodes[0].childNodes[1].setAttribute("fill", "#F14769");
 
                     for(var i = 2; i < 23; i++) {
@@ -454,21 +490,20 @@
                 </script>
             </div>
             <div class="column right">
-                <h1 class="sectitle">Nelle vicinanze ...</h1>
+                <a id="nearTitle" style="color: #4A4A4A;"><h1 class="sectitle top">Nelle vicinanze <i class="fas fa-xs fa-arrow-alt-circle-right"></i></h1></a>
                 <div class="columns">
                     <?php 
                         require ($DOCUMENT_ROOT . 'php/printNearButtons.php');
-                        
                     ?>
                 </div>
-                <h1 class="sectitle">Preferiti ...</h1>
+                <a id="favTitle" style="color: #4A4A4A;"><h1 class="sectitle">Preferiti <i class="fas fa-xs fa-arrow-alt-circle-right"></i></h1></a>
                 <div class="columns">
                     <?php 
                         require ($DOCUMENT_ROOT . 'php/printFavButtons.php');
                     ?>
                 </div>
 
-                <h1 class="sectitle">Prenotati ...</h1>
+                <a id="bookTitle" style="color: #4A4A4A;"><h1 class="sectitle">Prenotati <i class="fas fa-xs fa-arrow-alt-circle-right"></i></h1></a>
                 <div class="columns">
                     <?php 
                         require ($DOCUMENT_ROOT . 'php/printBookedButtons.php');
