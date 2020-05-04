@@ -1,12 +1,12 @@
 <?php
     session_start();
     if(isset($_SESSION["logged"]) || isset($_COOKIE['logged'])) {
-        header('Location: /home.php');
+        header('Location: /home');
     }
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="it">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
