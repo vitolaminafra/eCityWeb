@@ -12,7 +12,7 @@
     $sql = "INSERT INTO preferito(uid, sid) VALUES($uid, $sid)";
     $conn->query($sql);
 
-    header('Location: /home.php?newFav');
+    header('Location: /home?newFav');
 
 
 

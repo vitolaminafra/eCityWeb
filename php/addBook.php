@@ -13,7 +13,7 @@
     $sql = "INSERT INTO prenotazione(uid, sid) VALUES($uid, $sid)";
     $conn->query($sql);
 
-    header('Location: /home.php?newBook');
+    header('Location: /home?newBook');
 
 
 

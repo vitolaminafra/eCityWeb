@@ -14,7 +14,7 @@
 
     echo $sql;
 
-    header('Location: /home.php?remFav');
+    header('Location: /home?remFav');
 
 
 

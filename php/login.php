@@ -14,13 +14,12 @@
                 if($remain == "true") {
                     setcookie("logged", $row["uid"], time() + (86400 * 30), "/");
                 } else {
-                    session_start();
                     $_SESSION["logged"] = $row["uid"];
                 }
-                header('Location: /home.html');
+                header('Location: /home');
             }
         }
     } 
     $conn->close();
-    header('Location: /index.php?notfound');
+    header('Location: /index?notfound');
 ?>

@@ -18,10 +18,10 @@
             $sql = "UPDATE utente SET psw = '$new' WHERE utente.uid = $uid";
             $result = $conn->query($sql);
             $conn->close();
-            header('Location: /home.php?pswChanged');
+            header('Location: /home?pswChanged');
         } else {
             $conn->close();
-            header('Location: /home.php?pswNotEqual');
+            header('Location: /home?pswNotEqual');
         }
     }
 ?>

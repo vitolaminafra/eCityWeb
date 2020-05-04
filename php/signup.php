@@ -11,7 +11,7 @@
     $result = $conn->query($sql);
 
     if ($result->num_rows > 0) {
-        header('Location: /index.php?alreadyin');
+        header('Location: /index?alreadyin');
     } else {
         $sql = "INSERT INTO utente(nome, cognome, email, psw) VALUES ('$nome', '$cognome', '$email', '".md5($psw)."')";
         $result = $conn->query($sql);
@@ -28,7 +28,7 @@
                 $_SESSION["logged"] = $row["uid"];
             }
             $conn->close();
-            header('Location: /home.php');
+            header('Location: /home');
         } 
     }
 

@@ -14,6 +14,6 @@
     $result = $conn->query($sql);
 
     $conn->close();
-    header('Location: /home.php?dataChanged');
+    header('Location: /home?dataChanged');
 
 ?>

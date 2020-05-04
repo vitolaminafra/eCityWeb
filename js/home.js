@@ -83,7 +83,7 @@ $( document ).ready(function() {
 
     //  RICARICARE LA PARINA QUANDO SI CHIUDE UNA NOTIFICA
     $("#closenoti").click(function() {
-        window.location.replace("/home.php");
+        window.location.replace("/home");
     });
 
     // CAMBIO COLORE DEI MARKER QUANDO IL MOUSE PASSA SU UN PULSANTE
