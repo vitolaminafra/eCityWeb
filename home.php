@@ -489,20 +489,23 @@
                 </script>
             </div>
             <div class="column right">
-                <a id="nearTitle" style="color: #4A4A4A;"><h1 class="sectitle top">Nelle vicinanze <i class="fas fa-xs fa-arrow-alt-circle-right"></i></h1></a>
+                <h1 class="sectitle top" style="display: inline-block;">Nelle vicinanze</h1>
+                <a id="nearTitle"><span id="top" class="tag is-success is-rounded is-light" style="float: right;">Vedi tutti</span></a>
                 <div class="columns">
                     <?php 
                         require ($DOCUMENT_ROOT . 'php/printNearButtons.php');
                     ?>
                 </div>
-                <a id="favTitle" style="color: #4A4A4A;"><h1 class="sectitle">Preferiti <i class="fas fa-xs fa-arrow-alt-circle-right"></i></h1></a>
+                <h1 class="sectitle" style="display: inline-block;">Preferiti</h1>
+                <a id="favTitle"><span class="tag is-danger is-rounded is-light" style="float: right;">Vedi tutti</span></a>
                 <div class="columns">
                     <?php 
                         require ($DOCUMENT_ROOT . 'php/printFavButtons.php');
                     ?>
                 </div>
 
-                <a id="bookTitle" style="color: #4A4A4A;"><h1 class="sectitle">Prenotati <i class="fas fa-xs fa-arrow-alt-circle-right"></i></h1></a>
+                <h1 class="sectitle" style="display: inline-block;">Prenotati</h1>
+                <a id="bookTitle"><span class="tag is-info is-rounded is-light" style="float: right;">Vedi tutti</span></a>
                 <div class="columns">
                     <?php 
                         require ($DOCUMENT_ROOT . 'php/printBookedButtons.php');

@@ -63,6 +63,10 @@ p.elemSub2 {
 
 @media only screen and (max-width: 991px) {
 
+    span#top {
+        margin-top: 1.2em;
+    }
+
     div.container {
         margin-left: 1em;
         margin-right: 1em;
